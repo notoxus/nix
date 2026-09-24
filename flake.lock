@@ -1,0 +1,125 @@
+{
+  "nodes": {
+    "easyeffects-presets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780142087,
+        "narHash": "sha256-JpQVWuEokBRu01xkGA22dPeV5Jo8Xzvfrg5oQ8RtIrI=",
+        "owner": "JackHack96",
+        "repo": "EasyEffects-Presets",
+        "rev": "dd966e41ad9e44d4b11e19047f526ba718bbbe57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JackHack96",
+        "repo": "EasyEffects-Presets",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790021793,
+        "narHash": "sha256-wXAdaLBAjbQK/OfESV/i0pgolkz+Uo4SbBP/MbfGLHU=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "a3dfb887d40d134af29fa8e924ba85a3e3a99194",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1789921291,
+        "narHash": "sha256-Ft/BRnIqw1MywFoXydKobjjWmDFgDdYtSpJliE8+yUw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "44a91898084f46797b5fac650c7e8c9ac38c43d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable-firmware": {
+      "locked": {
+        "lastModified": 1789038502,
+        "narHash": "sha256-/z7jMI1qzmu1M+qdYZRyoHOZ/x8UMUHxj8f3lKuxzgs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d2f0551226ee44652aebf6217752cc78f7a47e84",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d2f0551226ee44652aebf6217752cc78f7a47e84",
+        "type": "github"
+      }
+    },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789344529,
+        "narHash": "sha256-vZ0K+5Par33Omh1z1iRAXEvS4m0/jIb6S6aflJjyUVE=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "rev": "5d66d118861fedcbe039d9d04d06904cced40613",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "type": "github"
+      }
+    },
+    "noctalia-greeter": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789367673,
+        "narHash": "sha256-EUAnyaH/qpAaNWrgtARuPK7Lnow2kwnZBwnQDmsIERU=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "rev": "d9fe1d7851464a923020d39efae8a6e3561f0d63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "easyeffects-presets": "easyeffects-presets",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-stable-firmware": "nixpkgs-stable-firmware",
+        "noctalia": "noctalia",
+        "noctalia-greeter": "noctalia-greeter"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
