@@ -24,7 +24,6 @@
       shellAliases = {
          ll = "ls -lah --icons";
          gs = "git status";
-         bentopdf = "docker run -d --rm --name bentopdf -p 127.0.0.1:3000:8080 ghcr.io/alam00000/bentopdf-simple:latest";
          tree = "eza --tree --icons -a";
       };
    };

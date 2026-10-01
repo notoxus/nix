@@ -9,12 +9,8 @@
 
   # Lid behavior
   services.logind.settings.Login = {
-    # On battery: closing and suspending
     HandleLidSwitch = "suspend";
-    # On AC: keep the machine running by this way:
-    # Lock + monitor-off will be handled separately in the user session.
     HandleLidSwitchExternalPower = "ignore";
-    # External monitor / dock: keep running.
     HandleLidSwitchDocked = "ignore";
   };
 

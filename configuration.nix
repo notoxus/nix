@@ -118,6 +118,7 @@
       vim
       wget
       git
+      git-lfs
       unzip
       gcc
       gnumake

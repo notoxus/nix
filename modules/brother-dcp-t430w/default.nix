@@ -13,45 +13,53 @@ pkgs.stdenv.mkDerivation {
     makeWrapper
   ];
 
-  buildInputs = [
-    pkgs.stdenv.cc.cc.lib
+  buildInputs = with pkgs; [
+    stdenv.cc.cc.lib
+    perl
+    cups
+    ghostscript
+    a2ps
+    file
+    coreutils
+    gnugrep
+    gnused
+    gawk
   ];
 
   unpackPhase = ''
-    rpm2cpio "$src" | cpio -id
+    rpm2cpio "$src" | cpio -idm
   '';
 
   installPhase = ''
-    mkdir -p "$out"
+    mkdir -p $out
+    cp -r opt $out/
+    
+    # 1. Sửa hardcoded paths
+    substituteInPlace $out/opt/brother/Printers/dcpt430w/cupswrapper/brother_lpdwrapper_dcpt430w \
+      --replace-quiet "basedir=\"/opt/brother/Printers/dcpt430w\"" "basedir=\"$out/opt/brother/Printers/dcpt430w\"" \
+      --replace-quiet "/opt/brother/Printers/dcpt430w" "$out/opt/brother/Printers/dcpt430w"
 
-    # Keep Brother's original directory layout.
-    cp -r opt "$out/"
+    substituteInPlace $out/opt/brother/Printers/dcpt430w/lpd/filter_dcpt430w \
+      --replace-quiet "/opt/brother/Printers/dcpt430w" "$out/opt/brother/Printers/dcpt430w"
 
-    # The RPM's post-install script creates these architecture-independent
-    # symlinks. Reproduce them inside the Nix store.
-    ln -s \
-      "$out/opt/brother/Printers/dcpt430w/lpd/x86_64/brdcpt430wfilter" \
-      "$out/opt/brother/Printers/dcpt430w/lpd/brdcpt430wfilter"
+    # 2. Sửa cứng đường dẫn Perl (cho an toàn tuyệt đối)
+    substituteInPlace $out/opt/brother/Printers/dcpt430w/cupswrapper/brother_lpdwrapper_dcpt430w \
+      --replace-quiet '#! /usr/bin/perl' '#!${pkgs.perl}/bin/perl'
+    substituteInPlace $out/opt/brother/Printers/dcpt430w/lpd/filter_dcpt430w \
+      --replace-quiet '#! /usr/bin/perl' '#!${pkgs.perl}/bin/perl'
 
-    ln -s \
-      "$out/opt/brother/Printers/dcpt430w/lpd/x86_64/brprintconf_dcpt430w" \
-      "$out/opt/brother/Printers/dcpt430w/lpd/brprintconf_dcpt430w"
-
-    # CUPS expects filters in its filter directory.
-    mkdir -p "$out/lib/cups/filter"
-    ln -s \
-      "$out/opt/brother/Printers/dcpt430w/cupswrapper/brother_lpdwrapper_dcpt430w" \
-      "$out/lib/cups/filter/brother_lpdwrapper_dcpt430w"
-
-    # CUPS model/PPD.
-    mkdir -p "$out/share/cups/model"
-    ln -s \
-      "$out/opt/brother/Printers/dcpt430w/cupswrapper/brother_dcpt430w_printer_en.ppd" \
-      "$out/share/cups/model/brother_dcpt430w_printer_en.ppd"
+    # 3. Tạo symlink cho CUPS
+    mkdir -p $out/lib/cups/filter
+    ln -s $out/opt/brother/Printers/dcpt430w/cupswrapper/brother_lpdwrapper_dcpt430w $out/lib/cups/filter/brother_lpdwrapper_dcpt430w
   '';
 
-  postInstall = ''
-    patchShebangs "$out/opt/brother/Printers/dcpt430w"
+  # Dùng postFixup thay vì fixupPhase để không làm mất autoPatchelfHook mặc định
+  postFixup = ''
+    wrapProgram $out/opt/brother/Printers/dcpt430w/cupswrapper/brother_lpdwrapper_dcpt430w \
+      --prefix PATH : ${lib.makeBinPath (with pkgs; [ coreutils gnugrep gnused gawk file ghostscript a2ps ])}
+
+    wrapProgram $out/opt/brother/Printers/dcpt430w/lpd/filter_dcpt430w \
+      --prefix PATH : ${lib.makeBinPath (with pkgs; [ coreutils gnugrep gnused gawk file ghostscript a2ps ])}
   '';
 
   meta = {

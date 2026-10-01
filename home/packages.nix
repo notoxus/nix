@@ -28,11 +28,17 @@ in
     gh
     file
     imagemagick
-
+    # Networking & Troubleshooting
+    nmap
+    avahi
     # Development
     jdk21
     nodejs
-
+    pnpm
+    python3
+    docker
+    # Lab setting up
+    openvpn
     # Desktop App
     thunar
     codex

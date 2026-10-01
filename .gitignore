@@ -1,1 +1,9 @@
 result/
+result-*
+*.backup
+*.swp
+*.swo
+*~
+.direnv/
+.envrc
+
