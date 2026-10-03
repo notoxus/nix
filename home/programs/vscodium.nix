@@ -10,6 +10,8 @@
             formulahendry.code-runner
             arrterian.nix-env-selector
             dracula-theme.theme-dracula
+            ms-dotnettools.csharp
+            llvm-vs-code-extensions.vscode-clangd
          ];
 
          userSettings = {

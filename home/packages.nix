@@ -36,6 +36,7 @@ in
     nodejs
     pnpm
     python3
+    cargo
     docker
     # Lab setting up
     openvpn
