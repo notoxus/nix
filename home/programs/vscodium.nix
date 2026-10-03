@@ -6,12 +6,20 @@
 
       profiles.default = {
          extensions = with pkgs.vscode-extensions; [
+            # Nix
             bbenoist.nix
-            formulahendry.code-runner
             arrterian.nix-env-selector
-            dracula-theme.theme-dracula
-            ms-dotnettools.csharp
+            # C/C++
             llvm-vs-code-extensions.vscode-clangd
+            # C#
+            ms-dotnettools.csharp
+            # Java
+            redhat.java
+            # Python
+            ms-python.python
+
+            formulahendry.code-runner
+            dracula-theme.theme-dracula
          ];
 
          userSettings = {

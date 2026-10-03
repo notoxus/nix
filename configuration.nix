@@ -165,6 +165,7 @@
          "davinci-resolve"
          "brother-dcp-t430w-driver"
          "corefonts"
+         "vscode-extension-ms-dotnettools-csharp"
       ];
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
    system.stateVersion = "26.05";

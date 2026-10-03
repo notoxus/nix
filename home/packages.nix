@@ -37,6 +37,9 @@ in
     pnpm
     python3
     cargo
+    clang
+    clang-tools
+    dotnet-sdk
     docker
     # Lab setting up
     openvpn
