@@ -3,9 +3,8 @@
 {
    imports = [ 
       ./hardware-configuration.nix
-      ./system-fonts.nix
-      ./modules/power.nix
-      ./modules/brother-dcp-t430w/module.nix
+      ./modules/system
+      ./modules/drivers/brother-dcp-t430w/module.nix
       inputs.noctalia.nixosModules.default
       inputs.noctalia-greeter.nixosModules.default
    ];

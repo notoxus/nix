@@ -9,5 +9,7 @@
     # ./yazi.nix
     ./eclipse.nix
     # ./packettracer.nix
+    ./git.nix
+    ./gh.nix
   ];
 }

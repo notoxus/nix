@@ -2,6 +2,9 @@
 
 This repository contains my declarative NixOS and Home Manager configuration.
 
+`To see the modular structure`
+[Read It](LAYOUT.md)
+
 ### System Installation
 - Home Manager is integrated into the NixOS flake, so apply both system and user configurations together:
 
