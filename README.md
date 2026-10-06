@@ -25,9 +25,9 @@ The NixOS Home Manager configuration includes the core applications I use daily.
 
 ## Others
 
-- `home/modules/power.nix` is my favorite power management
+- `modules/system/power.nix` is my favorite power management
 
-- `home/brother-dcp-t430w/` is my print config
+- `modules/drivers//brother-dcp-t430w/` is my print config
 
 ```
 nixpkgs-stable-firmware.url = "github:NixOS/nixpkgs/d2f0551226ee44652aebf6217752cc78f7a47e84";

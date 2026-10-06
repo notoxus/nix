@@ -22,7 +22,7 @@
          share = false;
       };
       shellAliases = {
-         ll = "ls -lah --icons";
+         ll = "ls -lah";
          gs = "git status";
          tree = "eza --tree --icons -a";
       };

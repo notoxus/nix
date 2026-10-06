@@ -1,17 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
-let
-   system = pkgs.stdenv.hostPlatform.system;
-   unstable = import inputs.nixpkgs {
-    inherit system;
-
-    config.allowUnfreePredicate = pkg:
-      builtins.elem (pkgs.lib.getName pkg) [
-        "cisco-packet-tracer"
-        "CiscoPacketTracer_901_Ubuntu_64bit.deb"
-      ];
-  };  
-in
 {
   home.packages = with pkgs; [
     # CLI / terminal
@@ -28,6 +16,10 @@ in
     gh
     file
     imagemagick
+    # Hardware Monitor
+    lm_sensors
+    wl-mirror
+    jq
     # Networking & Troubleshooting
     nmap
     avahi
@@ -40,21 +32,18 @@ in
     clang
     clang-tools
     dotnet-sdk
-    docker
     # Lab setting up
     openvpn
     # Desktop App
-    thunar
     codex
     rnote
     gaphor
-    unstable.rustdesk-flutter
+    rustdesk-flutter
     obs-studio
     mpv
-    ardour
     libreoffice
     zotero
-    unstable.cisco-packet-tracer_9
+    cisco-packet-tracer_9
     (writeShellScriptBin "wake-usb" ''
       export PATH="${pkgs.usbutils}/bin:$PATH"
       echo "=== Scan and Reset Connected Peripheral Devs ==="

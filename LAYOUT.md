@@ -33,10 +33,9 @@ nix/
     │   ├── gh.nix
     │   ├── zsh.nix
     │   ├── ghostty.nix
-    │   ├── tmux.nix
-    │   ├── neovim.nix
     │   ├── starship.nix
     │   ├── fzf.nix
     │   ├── yazi.nix
     │   └── vscodium.nix
+    │   
     └── packages.nix

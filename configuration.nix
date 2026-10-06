@@ -18,6 +18,11 @@
    hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
+      settings.General = {
+         FastConnectable = true;
+         ReconnectAttempts = 7;
+      };
+      input.General.UserspaceHID = true;
    };
    # Set your time zone.
    time.timeZone = "Asia/Ho_Chi_Minh";
@@ -88,8 +93,12 @@
          };
       };
    };
-   programs.thunar.enable = true;
-   programs.thunar.plugins = [ pkgs.thunar-volman ];
+   programs.thunar = {
+      enable = true;
+      plugins = with pkgs; [ thunar-volman thunar-archive-plugin ];
+   };
+   programs.xfconf.enable = true;   # lets Thunar save its settings
+   services.tumbler.enable = true;  # image/video thumbnails
    # Plug N Play instead of 'sudo mount' commands
    services.gvfs.enable = true;
    services.udisks2.enable = true;
@@ -130,6 +139,7 @@
       dpkg
       distrobox
       podman
+      file-roller
    ];
    virtualisation.podman = {
       enable = true;
@@ -165,6 +175,8 @@
          "brother-dcp-t430w-driver"
          "corefonts"
          "vscode-extension-ms-dotnettools-csharp"
+         "cisco-packet-tracer"
+         "CiscoPacketTracer_901_Ubuntu_64bit.deb"
       ];
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
    system.stateVersion = "26.05";
