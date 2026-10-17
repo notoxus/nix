@@ -2,7 +2,7 @@
    gtk = {
       enable = true;
       font = {
-         name = "Noto Sans";
+         name = "Inter";
          size = 11;
       };
    };

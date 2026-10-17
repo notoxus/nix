@@ -16,6 +16,7 @@
     gh
     file
     imagemagick
+    glib
     # Hardware Monitor
     lm_sensors
     wl-mirror

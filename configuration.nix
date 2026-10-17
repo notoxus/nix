@@ -6,7 +6,6 @@
       ./modules/system
       ./modules/drivers/brother-dcp-t430w/module.nix
       inputs.noctalia.nixosModules.default
-      inputs.noctalia-greeter.nixosModules.default
    ];
 
    # Use the systemd-boot EFI boot loader.
@@ -71,27 +70,19 @@
    programs.noctalia = { 
       enable = true;
    };
-   services.displayManager.noctalia-greeter = {
-      enable = true;
-      settings = {
-         cursor = {
-            theme = "Bibata-Modern-Ice";
-            size = 28;
-            path = "${pkgs.bibata-cursors}/share/icons";
-         };
-
-         keyboard = {
-            layout = "us";
-         };
-
-         idle = {
-            timeout = 300;
-         };
-
-         appearance = {
-            font_family = "JetBrainsMono Nerd Font";
-         };
+   services.desktopManager.plasma6.enable = true;
+   services.displayManager = {
+      defaultSession = "niri";
+      sddm = {
+         enable = true;
+         wayland.enable = true;
+         theme = "pixie";
+         extraPackages = with pkgs.kdePackages; [ qtsvg qtdeclarative qt5compat ];
       };
+   };
+   services.xserver = {
+     enable = true;
+     xkb.layout = "us";
    };
    programs.thunar = {
       enable = true;
@@ -123,11 +114,15 @@
    # List packages installed in system profile.
    # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
+      (inputs.pixie-sddm.packages.${pkgs.stdenv.hostPlatform.system}.pixie-sddm.override {
+         fontFamily = "Inter";
+      })
       vim
       wget
       git
       git-lfs
       unzip
+      zip
       gcc
       gnumake
       xwayland-satellite
@@ -138,8 +133,6 @@
       rpm
       dpkg
       distrobox
-      podman
-      file-roller
    ];
    virtualisation.podman = {
       enable = true;

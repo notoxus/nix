@@ -14,8 +14,8 @@
          url = "github:noctalia-dev/noctalia";
          inputs.nixpkgs.follows = "nixpkgs";
       };
-      noctalia-greeter = {
-         url = "github:noctalia-dev/noctalia-greeter";
+      pixie-sddm = {
+         url = "github:xCaptaiN09/pixie-sddm";
          inputs.nixpkgs.follows = "nixpkgs";
       };
       easyeffects-presets = {

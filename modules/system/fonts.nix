@@ -3,9 +3,8 @@
    fonts.packages = with pkgs; [
       corefonts
       nerd-fonts.jetbrains-mono
-      (google-fonts.override {
-         fonts = [ "Be Vietnam Pro" ];
-      })
+      nerd-fonts.symbols-only
+      inter
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
@@ -17,8 +16,8 @@
          "Noto Color Emoji"
       ];
       sansSerif = [
-         "Be Vietnam Pro"
-         "Noto Sans"
+         "Inter"
+         "Symbols Nerd Font"
          "Noto Sans CJK SC"
          "Noto Color Emoji"
       ];

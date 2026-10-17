@@ -1,19 +1,24 @@
 { lib, inputs, ... }:
 
 {
-  imports = [
-    ./home/programs
-    ./home/desktop
-    ./home/packages.nix
-  ];
-  home.username = "juo";
-  home.homeDirectory = "/home/juo";
+   imports = [
+      ./home/programs
+      ./home/desktop
+      ./home/packages.nix
+   ];
+   home.username = "juo";
+   home.homeDirectory = "/home/juo";
 
-  home.sessionPath = [
-    "$HOME/.local/bin"
-    "$HOME/bin"
-  ];
-  home.stateVersion = "26.05";
-  programs.home-manager.enable = true;
+   home.sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/bin"
+   ];
+
+   home.sessionVariables = {
+     _JAVA_AWT_WM_NONREPARENTING = "1";
+   };
+
+   home.stateVersion = "26.05";
+   programs.home-manager.enable = true;
 }
 

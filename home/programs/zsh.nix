@@ -26,5 +26,14 @@
          gs = "git status";
          tree = "eza --tree --icons -a";
       };
+      initContent = ''
+         if [[ -o interactive ]] \
+         && [[ "''${TERM_PROGRAM:-}" == "ghostty" || "''${TERM:-}" == "xterm-ghostty" ]] \
+         && [[ -z "''${TMUX:-}" && -z "''${NOTOXUS_FASTFETCH_SHOWN:-}" ]] \
+         && (( $+commands[fastfetch] )); then
+            export NOTOXUS_FASTFETCH_SHOWN=1
+            fastfetch --config "''${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/autostart-config.jsonc"
+         fi
+      '';
    };
 }
