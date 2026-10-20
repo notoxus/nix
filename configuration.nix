@@ -70,7 +70,6 @@
    programs.noctalia = { 
       enable = true;
    };
-   services.desktopManager.plasma6.enable = true;
    services.displayManager = {
       defaultSession = "niri";
       sddm = {
@@ -133,6 +132,7 @@
       rpm
       dpkg
       distrobox
+      file-roller
    ];
    virtualisation.podman = {
       enable = true;

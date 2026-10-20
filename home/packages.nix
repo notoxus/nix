@@ -33,6 +33,8 @@
     clang
     clang-tools
     dotnet-sdk
+    maven
+    gradle
     # Lab setting up
     openvpn
     # Desktop App
@@ -40,9 +42,8 @@
     rnote
     gaphor
     rustdesk-flutter
-    obs-studio
-    mpv
-    libreoffice
+    onlyoffice-desktopeditors
+    pdfpc
     zotero
     cisco-packet-tracer_9
     (writeShellScriptBin "wake-usb" ''
@@ -87,7 +88,15 @@
       echo ""
       read -n 1 -s -r -p "Press any key to exit..."
     '')
-    maven
-    gradle
+    # Media & Streaming
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        obs-pipewire-audio-capture
+        obs-vkcapture
+      ];
+    })
+    mpv
+    qlcplus
+    godot_4
   ];
 }

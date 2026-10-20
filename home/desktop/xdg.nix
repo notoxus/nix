@@ -1,14 +1,11 @@
 {
-xdg = {
-      enable = true;
-      configFile."niri-mimeapps.list".text = ''
-         [Default Applications]
-         inode/directory=thunar.desktop
-      '';
+   xdg = {
+      mimeApps = {
+         enable = true;
 
-      configFile."kde-mimeapps.list".text = ''
-         [Default Applications]
-         inode/directory=org.kde.dolphin.desktop
-      '';
+         defaultApplications = {
+           "inode/directory" = [ "thunar.desktop" ];
+         };
+      };
    };
 }
